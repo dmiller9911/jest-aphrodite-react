@@ -1,0 +1,19 @@
+{
+  "defaultSeverity": "error",
+  "extends": ["tslint:latest", "tslint-config-prettier"],
+  "jsRules": {
+    "quotemark": [true, "single"]
+  },
+  "rules": {
+    "quotemark": [true, "single"],
+    "interface-name": false,
+    "variable-name": false,
+    "object-literal-key-quotes": [true, "as-needed"],
+    "object-literal-sort-keys": false,
+    "no-implicit-dependencies": false
+  },
+  "linterOptions": {
+    "exclude": ["lib/**"]
+  },
+  "rulesDirectory": []
+}
