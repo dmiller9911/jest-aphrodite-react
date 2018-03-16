@@ -56,7 +56,7 @@ to React projects that use [`aphrodite`][aphrodite].
 ### Preview
 
 <img
-  src="./other/snapshot.png"
+  src="https://github.com/dmiller9911/jest-aphrodite-react/raw/master/other/snapshot.png"
   alt="Terminal Screenshot"
   title="Terminal Screenshot"
   width="500px"
@@ -95,9 +95,35 @@ Or in your Jest serializer config:
 }
 ```
 
-## Examples
+## API
 
-For environment setup set [./jestSetup.js](/jestSetup.js) and for test examples for both [enzyme][enzyme] and [`react-test-renderer`][react-test-renderer] see [./src/serializer.test.tsx](./src/serializer.test.tsx)
+### `createSerializer(getAphroditeStyleSheetUtils: () => StyleSheetUtils, [options]: SerializerOptions): jest.SnapshotSerializerPlugin`
+
+`options: SerializerOptions`:
+
+<!-- prettier-ignore -->
+| Parameter | Type | default | Description |
+|:---|:---|:---|:---|
+| removeVendorPrefixes | `boolean` | `false` |removes vendor prefixed values from out.  This greatly reduces the foot print of the output, but does decrease performance. |
+| classNameReplacer | `(className: string, index: number) => string` | [see src](https://github.com/dmiller9911/jest-aphrodite-react/blob/master/src/replaceClassNames.ts#L5) |Callback to focus a new option; receives the option as a parameter. |
+
+#### Example
+
+```Typescript
+import { StyleSheetTestUtils } from 'aphrodite';
+import { createSerializer } from 'jest-aphrodite-react';
+
+expect.addSnapshotSerializer(
+  createSerializer(
+    () => StyleSheetTestUtils,
+    { removeVendorPrefixes: true }
+  ),
+);
+```
+
+## Other Examples
+
+For environment setup set [./jestSetup.js](/jestSetup.js) and for test examples for both [enzyme][enzyme] and [`react-test-renderer`][react-test-renderer] see [./src/serializer.test.tsx](./src/serializer.test.tsx) for `createSerializer` examples see [./src/serializerCustom.test.tsx](./src/serializerCustom.test.tsx)
 
 ## Inspiration
 
@@ -132,3 +158,4 @@ MIT
 [aphrodite]: https://github.com/Khan/aphrodite
 [yarn]: https://yarnpkg.com/en/
 [react-test-renderer]: https://reactjs.org/docs/test-renderer.html
+[enzyme]: https://github.com/airbnb/enzyme

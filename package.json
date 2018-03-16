@@ -1,6 +1,6 @@
 {
   "name": "jest-aphrodite-react",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "license": "MIT",
   "main": "./lib/index.js",
   "types": "./typings/index.d.ts",
@@ -11,12 +11,10 @@
     "prepublish": "npm run build",
     "test": "jest -c jest.config.json"
   },
-  "files": [
-    "lib",
-    "typings"
-  ],
+  "files": ["lib", "typings"],
   "dependencies": {
-    "css": "^2.2.1"
+    "css": "^2.2.1",
+    "css-in-js-utils": "^2.0.0"
   },
   "peerDependencies": {
     "aphrodite": "^2"
@@ -48,9 +46,6 @@
     "typescript": "^2.6.2"
   },
   "lint-staged": {
-    "*.{js,json,ts}": [
-      "prettier --write",
-      "git add"
-    ]
+    "*.{js,json,ts}": ["prettier --write", "git add"]
   }
 }
