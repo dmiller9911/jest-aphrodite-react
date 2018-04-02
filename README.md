@@ -2,6 +2,11 @@
 
 Jest Snapshot serializer for Aphrodite. Based off the serializer from [jest-glamor-react](https://github.com/kentcdodds/jest-glamor-react).
 
+[![version][version-badge]][package]
+[![MIT License][license-badge]][license]
+
+
+
 ## The problem
 
 If you use [`aphrodite`][aphrodite] as your CSS-in-JS solution, and you use
@@ -147,6 +152,10 @@ Contributions of any kind welcome!
 MIT
 
 [npm]: https://www.npmjs.com/
+[version-badge]: https://img.shields.io/npm/v/jest-aphrodite-react.svg?style=flat-square
+[package]: https://www.npmjs.com/package/jest-aphrodite-react
+[license-badge]: https://img.shields.io/npm/l/jest-aphrodite-react.svg?style=flat-square
+[license]: https://github.com/dmiller9911/jest-aphrodite-react/blob/master/LICENSE
 [node]: https://nodejs.org
 [snapshot]: http://facebook.github.io/jest/docs/snapshot-testing.html
 [jest]: http://facebook.github.io/jest/
