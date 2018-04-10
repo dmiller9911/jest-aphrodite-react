@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`react-test-renderer 1`] = `
+.wrapper {
+  background: papayawhip;
+  padding: 4em;
+}
+
+.title {
+  color: palevioletred;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+<section
+  className="wrapper"
+>
+  <h1
+    className="title"
+  >
+    Hello World, this is my first component styled with aphrodite!
+  </h1>
+</section>
+`;

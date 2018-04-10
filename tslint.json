@@ -10,7 +10,8 @@
     "variable-name": false,
     "object-literal-key-quotes": [true, "as-needed"],
     "object-literal-sort-keys": false,
-    "no-implicit-dependencies": false
+    "no-implicit-dependencies": false,
+    "no-submodule-imports": false
   },
   "linterOptions": {
     "exclude": ["lib/**"]
