@@ -87,16 +87,16 @@ npm install --save-dev jest-aphrodite-react
 At the top of your test file:
 
 ```javascript
-import { serializer } from 'jest-aphrodite-react';
+import { aphroditeSerializer } from 'jest-aphrodite-react'; // or jest-aphrodite-react/no-important
 
-expect.addSnapshotSerializer(serializer);
+expect.addSnapshotSerializer(aphroditeSerializer);
 ```
 
 Or in your Jest serializer config:
 
 ```javascript
 {
-  snapshotSerializers: ['jest-aphrodite-react'];
+  snapshotSerializers: ['jest-aphrodite-react']; // or jest-aphrodite-react/no-important
 }
 ```
 

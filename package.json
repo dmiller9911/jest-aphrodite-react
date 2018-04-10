@@ -11,7 +11,7 @@
     "prepublish": "npm run build",
     "test": "jest -c jest.config.json"
   },
-  "files": ["lib", "typings"],
+  "files": ["lib", "typings", "no-important.js", "no-important.d.ts"],
   "repository": {
     "type": "git",
     "url": "https://github.com/dmiller9911/jest-aphrodite-react"

@@ -3,7 +3,7 @@ import * as enzyme from 'enzyme';
 import toJson from 'enzyme-to-json';
 import * as React from 'react';
 import * as reactTestRenderer from 'react-test-renderer';
-import { aphroditeSerializer } from './serializer';
+import { aphroditeSerializer } from '.';
 
 expect.addSnapshotSerializer(aphroditeSerializer);
 

@@ -52,9 +52,11 @@ export function createSerializer(
 
 // doing this to make it easier for users to mock things
 // like switching between development mode and whatnot.
-const getAphroditeStyleSheetTestUtils = (): typeof StyleSheetTestUtils =>
-  require('aphrodite').StyleSheetTestUtils;
+const getAphroditeStyleSheetTestUtils = (
+  useImportant: boolean,
+) => (): typeof StyleSheetTestUtils =>
+  require(`aphrodite${useImportant ? '' : '/no-important'}`)
+    .StyleSheetTestUtils;
 
-export const aphroditeSerializer = createSerializer(
-  getAphroditeStyleSheetTestUtils,
-);
+export const serializer = (useImportant: boolean) =>
+  createSerializer(getAphroditeStyleSheetTestUtils(useImportant));
