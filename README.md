@@ -73,7 +73,7 @@ This module is distributed via [yarn][yarn] or [npm][npm] which is bundled with 
 should be installed as one of your project's `devDependencies`:
 
 ```
-yarm add --dev jest-aphrodite-react
+yarn add --dev jest-aphrodite-react
 ```
 
 or
