@@ -1,8 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`doesn't fail for nodes without styles 1`] = `<div />`;
-
-exports[`enzyme: enzyme.mount 1`] = `
+exports[`Wrapper: enzyme.mount 1`] = `
 .wrapper {
   background: papayawhip !important;
   padding: 4em !important;
@@ -29,7 +27,7 @@ exports[`enzyme: enzyme.mount 1`] = `
 </Wrapper>
 `;
 
-exports[`enzyme: enzyme.render 1`] = `
+exports[`Wrapper: enzyme.render 1`] = `
 .wrapper {
   background: papayawhip !important;
   padding: 4em !important;
@@ -52,7 +50,7 @@ exports[`enzyme: enzyme.render 1`] = `
 </section>
 `;
 
-exports[`enzyme: enzyme.shallow 1`] = `
+exports[`Wrapper: enzyme.shallow 1`] = `
 .wrapper {
   background: papayawhip !important;
   padding: 4em !important;
@@ -67,18 +65,7 @@ exports[`enzyme: enzyme.shallow 1`] = `
 </section>
 `;
 
-exports[`joins multiple classes 1`] = `
-.first-second-third {
-  background-color: black !important;
-  color: blue !important;
-}
-
-<div
-  className="first-second-third"
-/>
-`;
-
-exports[`react-test-renderer 1`] = `
+exports[`Wrapper: react-test-renderer 1`] = `
 .wrapper {
   background: papayawhip !important;
   padding: 4em !important;
@@ -101,7 +88,95 @@ exports[`react-test-renderer 1`] = `
 </section>
 `;
 
-exports[`supports mediaQueries 1`] = `
+exports[`Wrapper: react-testing-library 1`] = `
+.wrapper {
+  background: papayawhip !important;
+  padding: 4em !important;
+}
+
+.title {
+  color: palevioletred !important;
+  font-size: 1.5em !important;
+  text-align: center !important;
+}
+
+<section
+  class="wrapper"
+>
+  <h1
+    class="title"
+  >
+    Hello World, this is my first component styled with aphrodite!
+  </h1>
+</section>
+`;
+
+exports[`doesn't fail for nodes without styles: enzyme.mount 1`] = `<div />`;
+
+exports[`doesn't fail for nodes without styles: enzyme.render 1`] = `<div />`;
+
+exports[`doesn't fail for nodes without styles: enzyme.shallow 1`] = `<div />`;
+
+exports[`doesn't fail for nodes without styles: react-test-renderer 1`] = `<div />`;
+
+exports[`doesn't fail for nodes without styles: react-testing-library 1`] = `<div />`;
+
+exports[`joins multiple classes: enzyme.mount 1`] = `
+.first-second-third {
+  background-color: black !important;
+  color: blue !important;
+}
+
+<div
+  className="first-second-third"
+/>
+`;
+
+exports[`joins multiple classes: enzyme.render 1`] = `
+.first-second-third {
+  background-color: black !important;
+  color: blue !important;
+}
+
+<div
+  class="first-second-third"
+/>
+`;
+
+exports[`joins multiple classes: enzyme.shallow 1`] = `
+.first-second-third {
+  background-color: black !important;
+  color: blue !important;
+}
+
+<div
+  className="first-second-third"
+/>
+`;
+
+exports[`joins multiple classes: react-test-renderer 1`] = `
+.first-second-third {
+  background-color: black !important;
+  color: blue !important;
+}
+
+<div
+  className="first-second-third"
+/>
+`;
+
+exports[`joins multiple classes: react-testing-library 1`] = `
+.first-second-third {
+  background-color: black !important;
+  color: blue !important;
+}
+
+<div
+  class="first-second-third"
+/>
+`;
+
+exports[`supports mediaQueries: enzyme.mount 1`] = `
 .root {
   color: red !important;
 }
@@ -117,7 +192,71 @@ exports[`supports mediaQueries 1`] = `
 />
 `;
 
-exports[`supports pseudo selectors 1`] = `
+exports[`supports mediaQueries: enzyme.render 1`] = `
+.root {
+  color: red !important;
+}
+
+@media (min-width: 200px) {
+  .root {
+    color: black !important;
+  }
+}
+
+<div
+  class="root"
+/>
+`;
+
+exports[`supports mediaQueries: enzyme.shallow 1`] = `
+.root {
+  color: red !important;
+}
+
+@media (min-width: 200px) {
+  .root {
+    color: black !important;
+  }
+}
+
+<div
+  className="root"
+/>
+`;
+
+exports[`supports mediaQueries: react-test-renderer 1`] = `
+.root {
+  color: red !important;
+}
+
+@media (min-width: 200px) {
+  .root {
+    color: black !important;
+  }
+}
+
+<div
+  className="root"
+/>
+`;
+
+exports[`supports mediaQueries: react-testing-library 1`] = `
+.root {
+  color: red !important;
+}
+
+@media (min-width: 200px) {
+  .root {
+    color: black !important;
+  }
+}
+
+<div
+  class="root"
+/>
+`;
+
+exports[`supports pseudo selectors: enzyme.mount 1`] = `
 .root {
   color: red !important;
 }
@@ -137,7 +276,121 @@ exports[`supports pseudo selectors 1`] = `
 />
 `;
 
-exports[`works when the root element does not have styles 1`] = `
+exports[`supports pseudo selectors: enzyme.render 1`] = `
+.root {
+  color: red !important;
+}
+
+.root:hover {
+  color: green !important;
+}
+
+@media (min-width: 200px) {
+  .root:hover {
+    color: black !important;
+  }
+}
+
+<div
+  class="root"
+/>
+`;
+
+exports[`supports pseudo selectors: enzyme.shallow 1`] = `
+.root {
+  color: red !important;
+}
+
+.root:hover {
+  color: green !important;
+}
+
+@media (min-width: 200px) {
+  .root:hover {
+    color: black !important;
+  }
+}
+
+<div
+  className="root"
+/>
+`;
+
+exports[`supports pseudo selectors: react-test-renderer 1`] = `
+.root {
+  color: red !important;
+}
+
+.root:hover {
+  color: green !important;
+}
+
+@media (min-width: 200px) {
+  .root:hover {
+    color: black !important;
+  }
+}
+
+<div
+  className="root"
+/>
+`;
+
+exports[`supports pseudo selectors: react-testing-library 1`] = `
+.root {
+  color: red !important;
+}
+
+.root:hover {
+  color: green !important;
+}
+
+@media (min-width: 200px) {
+  .root:hover {
+    color: black !important;
+  }
+}
+
+<div
+  class="root"
+/>
+`;
+
+exports[`when the root element does not have styles: enzyme.mount 1`] = `
+.wrapper {
+  background: papayawhip !important;
+  padding: 4em !important;
+}
+
+<div>
+  <Wrapper>
+    <section
+      className="wrapper"
+    />
+  </Wrapper>
+</div>
+`;
+
+exports[`when the root element does not have styles: enzyme.render 1`] = `
+.wrapper {
+  background: papayawhip !important;
+  padding: 4em !important;
+}
+
+<div>
+  <section
+    class="wrapper"
+  />
+</div>
+`;
+
+exports[`when the root element does not have styles: enzyme.shallow 1`] = `
+<div>
+  <Wrapper />
+</div>
+`;
+
+exports[`when the root element does not have styles: react-test-renderer 1`] = `
 .wrapper {
   background: papayawhip !important;
   padding: 4em !important;
@@ -146,6 +399,19 @@ exports[`works when the root element does not have styles 1`] = `
 <div>
   <section
     className="wrapper"
+  />
+</div>
+`;
+
+exports[`when the root element does not have styles: react-testing-library 1`] = `
+.wrapper {
+  background: papayawhip !important;
+  padding: 4em !important;
+}
+
+<div>
+  <section
+    class="wrapper"
   />
 </div>
 `;

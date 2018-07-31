@@ -1,7 +1,7 @@
 import { css, StyleSheet } from 'aphrodite/no-important';
 import * as React from 'react';
-import * as reactTestRenderer from 'react-test-renderer';
 import { aphroditeSerializer } from './no-important';
+import { checkSnapshotForEachMethod} from './testUtil';
 
 expect.addSnapshotSerializer(aphroditeSerializer);
 
@@ -26,17 +26,14 @@ const Title: React.SFC = props => {
   return <h1 className={css(styles.title)} {...props} />;
 };
 
-test('react-test-renderer', () => {
-  const tree = reactTestRenderer
-    .create(
-      <Wrapper>
-        <Title>
-          Hello World, this is my first component styled with aphrodite!
-        </Title>
-      </Wrapper>,
-    )
-    .toJSON();
-  expect(tree).toMatchSnapshot();
+test('no-important', () => {
+  checkSnapshotForEachMethod(
+    <Wrapper>
+      <Title>
+        Hello World, this is my first component styled with aphrodite!
+      </Title>
+    </Wrapper>,
+  );
 });
 
 test('no-important exports match default package exports', () => {

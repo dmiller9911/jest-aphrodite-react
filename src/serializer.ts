@@ -9,13 +9,20 @@ export interface SerializerOptions {
   classNameReplacer?: ClassNameReplacer;
 }
 
+interface TrackedHTMLElement extends HTMLElement {
+  withStyles?: boolean;
+}
+
 export function createSerializer(
   getStyleSheetTestUtils: () => typeof StyleSheetTestUtils,
   { removeVendorPrefixes = false, classNameReplacer }: SerializerOptions = {},
 ): jest.SnapshotSerializerPlugin {
   function test(val: any) {
     return (
-      val && !val.withStyles && val.$$typeof === Symbol.for('react.test.json')
+      val &&
+      !val.withStyles &&
+      (val.$$typeof === Symbol.for('react.test.json') ||
+        (val instanceof HTMLElement && !isBeingSerialized(val)))
     );
   }
 
@@ -48,6 +55,18 @@ export function createSerializer(
     test,
     print,
   };
+}
+
+function isBeingSerialized(node: TrackedHTMLElement) {
+  let currentNode = node;
+
+  while (currentNode) {
+    if (currentNode.withStyles) {
+      return true;
+    }
+    currentNode = currentNode.parentNode as TrackedHTMLElement;
+  }
+  return false;
 }
 
 // doing this to make it easier for users to mock things

@@ -1,9 +1,7 @@
 import { css, StyleSheet, StyleSheetTestUtils } from 'aphrodite';
-import * as enzyme from 'enzyme';
-import toJson from 'enzyme-to-json';
 import * as React from 'react';
-import * as reactTestRenderer from 'react-test-renderer';
 import { createSerializer } from './serializer';
+import { checkSnapshotForEachMethod} from './testUtil';
 
 expect.addSnapshotSerializer(
   createSerializer(() => StyleSheetTestUtils, { removeVendorPrefixes: true }),
@@ -30,33 +28,14 @@ const Title: React.SFC = props => {
   return <h1 className={css(styles.title)} {...props} />;
 };
 
-test('removes vendor prefixed rules from react-test-renderer', () => {
-  const tree = reactTestRenderer
-    .create(
-      <Wrapper>
-        <Title>
-          Hello World, this is my first component styled with aphrodite!
-        </Title>
-      </Wrapper>,
-    )
-    .toJSON();
-  expect(tree).toMatchSnapshot();
-});
-
-test('removes vendor prefixed rules from enzyme', () => {
-  const ui = (
+test('removes vendor prefixed rules', () => {
+  checkSnapshotForEachMethod(
     <Wrapper>
       <Title>
         Hello World, this is my first component styled with aphrodite!
       </Title>
-    </Wrapper>
+    </Wrapper>,
   );
-
-  const enzymeMethods = ['shallow', 'mount', 'render'];
-  enzymeMethods.forEach(method => {
-    const tree = (enzyme as any)[method](ui);
-    expect(toJson(tree)).toMatchSnapshot(`enzyme.${method}`);
-  });
 });
 
 test('removes vendor prefixes inside mediaQueries', () => {
@@ -70,8 +49,5 @@ test('removes vendor prefixes inside mediaQueries', () => {
       },
     },
   });
-  const tree = reactTestRenderer
-    .create(<div className={css(styles.root)} />)
-    .toJSON();
-  expect(tree).toMatchSnapshot();
+  checkSnapshotForEachMethod(<div className={css(styles.root)} />);
 });

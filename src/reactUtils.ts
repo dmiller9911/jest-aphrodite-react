@@ -1,16 +1,18 @@
 import { ReactTestRendererJSON } from 'react-test-renderer';
 
 function getNodes(
-  node: ReactTestRendererJSON,
-  nodes: ReactTestRendererJSON[] = [],
+  node: ReactTestRendererJSON | HTMLElement,
+  nodes: (ReactTestRendererJSON | HTMLElement)[] = [],
 ) {
   if (node.children) {
-    const children: ReactTestRendererJSON[] =
+    const children: (ReactTestRendererJSON | HTMLElement)[] =
       typeof node.children === 'function'
         ? (node as any).children()
         : node.children;
 
-    children.forEach(child => getNodes(child, nodes));
+    if (Array.isArray(children)) {
+      children.forEach(child => getNodes(child, nodes));
+    }
   }
 
   if (typeof node === 'object') {

@@ -19,11 +19,15 @@ function isCSSSupportsQuery(rule: css.Node): rule is css.Supports {
   return rule.type === 'supports';
 }
 
-function getSelectors(nodes: ReactTestRendererJSON[]) {
+function getSelectors(nodes: (ReactTestRendererJSON | HTMLElement)[]) {
   return nodes.reduce<string[]>((selectors, node) => {
-    const props =
-      typeof node.props === 'function' ? (node as any).props() : node.props;
-    return [...selectors, ...getSelectorsFromProps(props)];
+    if (node instanceof HTMLElement) {
+      return getSelectorsFromDOM(selectors, node);
+    } else {
+      const props =
+        typeof node.props === 'function' ? (node as any).props() : node.props;
+      return [...selectors, ...getSelectorsFromProps(props)];
+    }
   }, []);
 }
 
@@ -36,6 +40,16 @@ function getSelectorsFromProps(props: any = {}) {
       .map(cn => `.${cn}`);
   }
   return [];
+}
+
+function getSelectorsFromDOM(selectors: string[], node: HTMLElement) {
+  const allChildren = node.querySelectorAll('*');
+  const nodeSelectors = Array.from(node.classList).map(cn => `.${cn}`);
+  selectors = Array.from(allChildren).reduce((s, c) => {
+    s.push(...Array.from(c.classList).map(cn => `.${cn}`));
+    return s;
+  }, selectors);
+  return [...nodeSelectors, ...selectors];
 }
 
 function filterPrefixedDelcartions(rule: css.Rule): css.Rule {

@@ -1,9 +1,7 @@
 import { css, StyleSheet } from 'aphrodite';
-import * as enzyme from 'enzyme';
-import toJson from 'enzyme-to-json';
 import * as React from 'react';
-import * as reactTestRenderer from 'react-test-renderer';
 import { aphroditeSerializer } from '.';
+import { checkSnapshotForEachMethod} from './testUtil';
 
 expect.addSnapshotSerializer(aphroditeSerializer);
 
@@ -28,49 +26,26 @@ const Title: React.SFC = props => {
   return <h1 className={css(styles.title)} {...props} />;
 };
 
-test('react-test-renderer', () => {
-  const tree = reactTestRenderer
-    .create(
-      <Wrapper>
-        <Title>
-          Hello World, this is my first component styled with aphrodite!
-        </Title>
-      </Wrapper>,
-    )
-    .toJSON();
-  expect(tree).toMatchSnapshot();
-});
-
-test('enzyme', () => {
-  const ui = (
+test('Wrapper', () => {
+  checkSnapshotForEachMethod(
     <Wrapper>
       <Title>
         Hello World, this is my first component styled with aphrodite!
       </Title>
     </Wrapper>
   );
-
-  const enzymeMethods = ['shallow', 'mount', 'render'];
-  enzymeMethods.forEach(method => {
-    const tree = (enzyme as any)[method](ui);
-    expect(toJson(tree)).toMatchSnapshot(`enzyme.${method}`);
-  });
 });
 
-test('works when the root element does not have styles', () => {
-  const tree = reactTestRenderer
-    .create(
-      <div>
-        <Wrapper />
-      </div>,
-    )
-    .toJSON();
-  expect(tree).toMatchSnapshot();
+test('when the root element does not have styles', () => {
+  checkSnapshotForEachMethod(
+    <div>
+      <Wrapper />
+    </div>
+  );
 });
 
 test(`doesn't fail for nodes without styles`, () => {
-  const tree = reactTestRenderer.create(<div />).toJSON();
-  expect(tree).toMatchSnapshot();
+  checkSnapshotForEachMethod(<div />);
 });
 
 test('joins multiple classes', () => {
@@ -79,10 +54,7 @@ test('joins multiple classes', () => {
     second: { backgroundColor: 'black' },
     third: { color: 'blue' },
   });
-  const tree = reactTestRenderer
-    .create(<div className={css(styles.first, styles.second, styles.third)} />)
-    .toJSON();
-  expect(tree).toMatchSnapshot();
+  checkSnapshotForEachMethod(<div className={css(styles.first, styles.second, styles.third)} />);
 });
 
 test('supports mediaQueries', () => {
@@ -94,10 +66,7 @@ test('supports mediaQueries', () => {
       },
     },
   });
-  const tree = reactTestRenderer
-    .create(<div className={css(styles.root)} />)
-    .toJSON();
-  expect(tree).toMatchSnapshot();
+  checkSnapshotForEachMethod(<div className={css(styles.root)} />);
 });
 
 test('supports pseudo selectors', () => {
@@ -114,8 +83,5 @@ test('supports pseudo selectors', () => {
       },
     },
   });
-  const tree = reactTestRenderer
-    .create(<div className={css(styles.root)} />)
-    .toJSON();
-  expect(tree).toMatchSnapshot();
+  checkSnapshotForEachMethod(<div className={css(styles.root)} />);
 });

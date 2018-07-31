@@ -1,6 +1,71 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`react-test-renderer 1`] = `
+exports[`no-important: enzyme.mount 1`] = `
+.wrapper {
+  background: papayawhip;
+  padding: 4em;
+}
+
+.title {
+  color: palevioletred;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+<Wrapper>
+  <section
+    className="wrapper"
+  >
+    <Title>
+      <h1
+        className="title"
+      >
+        Hello World, this is my first component styled with aphrodite!
+      </h1>
+    </Title>
+  </section>
+</Wrapper>
+`;
+
+exports[`no-important: enzyme.render 1`] = `
+.wrapper {
+  background: papayawhip;
+  padding: 4em;
+}
+
+.title {
+  color: palevioletred;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+<section
+  class="wrapper"
+>
+  <h1
+    class="title"
+  >
+    Hello World, this is my first component styled with aphrodite!
+  </h1>
+</section>
+`;
+
+exports[`no-important: enzyme.shallow 1`] = `
+.wrapper {
+  background: papayawhip;
+  padding: 4em;
+}
+
+<section
+  className="wrapper"
+>
+  <Title>
+    Hello World, this is my first component styled with aphrodite!
+  </Title>
+</section>
+`;
+
+exports[`no-important: react-test-renderer 1`] = `
 .wrapper {
   background: papayawhip;
   padding: 4em;
@@ -17,6 +82,29 @@ exports[`react-test-renderer 1`] = `
 >
   <h1
     className="title"
+  >
+    Hello World, this is my first component styled with aphrodite!
+  </h1>
+</section>
+`;
+
+exports[`no-important: react-testing-library 1`] = `
+.wrapper {
+  background: papayawhip;
+  padding: 4em;
+}
+
+.title {
+  color: palevioletred;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+<section
+  class="wrapper"
+>
+  <h1
+    class="title"
   >
     Hello World, this is my first component styled with aphrodite!
   </h1>

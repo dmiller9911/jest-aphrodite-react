@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`removes vendor prefixed rules from enzyme: enzyme.mount 1`] = `
+exports[`removes vendor prefixed rules: enzyme.mount 1`] = `
 .wrapper {
   display: flex !important;
   transform: translate(0, 0) !important;
@@ -27,7 +27,7 @@ exports[`removes vendor prefixed rules from enzyme: enzyme.mount 1`] = `
 </Wrapper>
 `;
 
-exports[`removes vendor prefixed rules from enzyme: enzyme.render 1`] = `
+exports[`removes vendor prefixed rules: enzyme.render 1`] = `
 .wrapper {
   display: flex !important;
   transform: translate(0, 0) !important;
@@ -50,7 +50,7 @@ exports[`removes vendor prefixed rules from enzyme: enzyme.render 1`] = `
 </section>
 `;
 
-exports[`removes vendor prefixed rules from enzyme: enzyme.shallow 1`] = `
+exports[`removes vendor prefixed rules: enzyme.shallow 1`] = `
 .wrapper {
   display: flex !important;
   transform: translate(0, 0) !important;
@@ -65,7 +65,7 @@ exports[`removes vendor prefixed rules from enzyme: enzyme.shallow 1`] = `
 </section>
 `;
 
-exports[`removes vendor prefixed rules from react-test-renderer 1`] = `
+exports[`removes vendor prefixed rules: react-test-renderer 1`] = `
 .wrapper {
   display: flex !important;
   transform: translate(0, 0) !important;
@@ -88,7 +88,30 @@ exports[`removes vendor prefixed rules from react-test-renderer 1`] = `
 </section>
 `;
 
-exports[`removes vendor prefixes inside mediaQueries 1`] = `
+exports[`removes vendor prefixed rules: react-testing-library 1`] = `
+.wrapper {
+  display: flex !important;
+  transform: translate(0, 0) !important;
+}
+
+.title {
+  color: palevioletred !important;
+  font-size: 1.5em !important;
+  text-align: center !important;
+}
+
+<section
+  class="wrapper"
+>
+  <h1
+    class="title"
+  >
+    Hello World, this is my first component styled with aphrodite!
+  </h1>
+</section>
+`;
+
+exports[`removes vendor prefixes inside mediaQueries: enzyme.mount 1`] = `
 @media (min-width: 200px) {
   .root {
     transform: translate(0, 0) !important;
@@ -103,5 +126,77 @@ exports[`removes vendor prefixes inside mediaQueries 1`] = `
 
 <div
   className="root"
+/>
+`;
+
+exports[`removes vendor prefixes inside mediaQueries: enzyme.render 1`] = `
+@media (min-width: 200px) {
+  .root {
+    transform: translate(0, 0) !important;
+  }
+}
+
+@supports (display: grid) {
+  .root {
+    display: flex !important;
+  }
+}
+
+<div
+  class="root"
+/>
+`;
+
+exports[`removes vendor prefixes inside mediaQueries: enzyme.shallow 1`] = `
+@media (min-width: 200px) {
+  .root {
+    transform: translate(0, 0) !important;
+  }
+}
+
+@supports (display: grid) {
+  .root {
+    display: flex !important;
+  }
+}
+
+<div
+  className="root"
+/>
+`;
+
+exports[`removes vendor prefixes inside mediaQueries: react-test-renderer 1`] = `
+@media (min-width: 200px) {
+  .root {
+    transform: translate(0, 0) !important;
+  }
+}
+
+@supports (display: grid) {
+  .root {
+    display: flex !important;
+  }
+}
+
+<div
+  className="root"
+/>
+`;
+
+exports[`removes vendor prefixes inside mediaQueries: react-testing-library 1`] = `
+@media (min-width: 200px) {
+  .root {
+    transform: translate(0, 0) !important;
+  }
+}
+
+@supports (display: grid) {
+  .root {
+    display: flex !important;
+  }
+}
+
+<div
+  class="root"
 />
 `;
